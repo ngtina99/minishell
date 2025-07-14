@@ -6,7 +6,7 @@
 #    By: ngtina1999 <ngtina1999@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/19 19:28:24 by yioffe            #+#    #+#              #
-#    Updated: 2025/07/15 01:31:24 by ngtina1999       ###   ########.fr        #
+#    Updated: 2025/07/15 01:37:37 by ngtina1999       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,13 +37,19 @@ GREEN = \033[0;32m
 CYAN = \033[0;36m
 NC = \033[0m
 
+all: precompile $(NAME)
+
+precompile:
+	@echo "$(CYAN)Compiling all sources ..."
+
+$(NAME): $(OBJS)
+	@echo "$(CYAN)Linking $(NAME) ..."
+	@$(LIBC) $@ $^
+	@echo "✅ $(GREEN)$(NAME) created$(NC)"
+
 %.o: %.c
 	@$(CC) $(CFLAGS) -c $< -o $@
 
-$(NAME): $(OBJS)
-	@echo "$(CYAN)Creating $(NAME) ..."
-	@$(LIBC) $(NAME) $(OBJS)
-	@echo "✅ $(GREEN)$(NAME) created $(NC)"
 
 all: $(NAME)
 
