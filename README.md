@@ -1,8 +1,9 @@
 # minishell
 
 A C-based Unix shell built from scratch - aka the magic behind your terminal.
-
+<div align="center">
 ✨ This project was a collaboration with [**Yulia**](https://github.com/leanor13). From late-night debugging sessions to complex C coding: we learned to turn frustration into progress and transforming our effort into a shell we’re genuinely proud of. ✨
+</div>
 
 
 ## 🛠️ Usage
