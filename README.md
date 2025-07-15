@@ -2,9 +2,11 @@
 
 A C-based Unix shell built from scratch - aka the magic behind your terminal.
 <div align="center">
-✨ This project was a collaboration with <a href="https://github.com/leanor13"><b>Yulia</b></a>.. From late-night debugging sessions to complex C coding: we learned to turn frustration into progress and transforming our effort into a shell we’re genuinely proud of. ✨
-</div>
 
+
+
+✨ This project was a collaboration with <a href="https://github.com/leanor13"><b>Yulia</b></a>. From late-night debugging sessions to complex C coding: we learned to turn frustration into progress and transforming our effort into a shell we’re genuinely proud of. ✨
+</div>
 
 ## 🛠️ Usage
 1️⃣ **Clone the repository**
