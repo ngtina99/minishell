@@ -1,8 +1,11 @@
 # minishell
 
-A simple Unix shell implementation written in C.
+A C-based Unix shell built from scratch - aka the magic behind your terminal.
+
+✨ This project was a collaboration with [**Yulia**](https://github.com/leanor13). From late-night debugging sessions to complex C coding: we learned to turn frustration into progress and transforming our effort into a shell we’re genuinely proud of. ✨
 
 
+## 🛠️ Usage
 1️⃣ **Clone the repository**
 
 ```bash
@@ -22,6 +25,90 @@ make
 ./minishell
 ```
 
+
+
+✅ 1️⃣ Clear modular separation
+
+You divided the code very cleanly:
+
+srcs/built_ins/ → all built-in command logic
+
+srcs/executor/ → manages command execution, pipes, file descriptors, heredoc
+
+srcs/main_flow/ → shell lifecycle, signals, cleanup
+
+srcs/parsing/ → full lexer + parser breakdown
+
+This modular split is clean and scalable, making it easier to maintain and extend.
+
+✅ 2️⃣ Thoughtful utility files
+
+I see files like:
+
+utils_free_close.c
+
+utils_misc.c
+
+utils_pipe.c
+
+This suggests you made small reusable helpers to avoid duplication — a good practice often skipped in student projects.
+
+✅ 3️⃣ Detailed parsing system
+
+The parsing folder is impressive:
+
+lexer.c, lexer_find_quote.c, lexer_handle_quote.c
+
+parser.c, parser_handle_files.c, parser_ifutils.c
+
+This shows you carefully handled edge cases:
+
+Quotes handling (lexer_find_quote, lexer_handle_quote)
+
+File parsing logic
+
+Conditional utils for complex parsing
+
+Many projects just mash this all together, so separating it is a big plus.
+
+✅ 4️⃣ Strong heredoc and pipe system
+
+You have:
+
+here_doc.c
+
+pipex.c
+
+This suggests you implemented heredoc fully and likely support complex multi-pipe commands — both of which are tricky parts of the minishell project.
+
+✅ 5️⃣ Signal handling in its own module
+
+File:
+
+signals.c
+
+Having signal management in a dedicated file is smart:
+
+Keeps the main logic clean
+
+Allows global signal behavior tuning (e.g., ignoring Ctrl-\ during input but forwarding during child execution)
+
+✅ 6️⃣ Libft reuse and Makefile integration
+
+You packaged your libft inside /includes/libft/ with its own Makefile — that’s clean, keeps dependencies controlled, and avoids external surprises.
+
+💥 Summary of your standout solutions
+✅ Clear code modularity
+
+✅ Careful and detailed parsing system
+
+✅ Robust heredoc + pipe handling
+
+✅ Clean signal management design
+
+✅ Reusable helpers/utilities
+
+✅ Proper libft integration
 
 
 ## Features
@@ -319,8 +406,14 @@ very long command: echo + paste a huge line
 
 - [ ] `&&`, `||`
 
+## 📋 Memory checks
+
+All features were tested under Valgrind:
+- `valgrind --leak-check=full --show-leak-kinds=all ./minishell`
+- No leaks except those allowed from `readline()`
+
 ## 🤝 Credits
-I had the pleasure of working with [**Yulia**](https://github.com/leanor13) and [**Lucas**](https://github.com/andlukass) on our Webserv project. I'm really proud of how we combined our skills, supported each other, and turned our teamwork into a project we’re all proud of. 🌟
+I couldn’t have asked for a better partner for my first big team project. Working with [**Yulia**](https://github.com/leanor13) on Minishell was both impactful and memorable.
 
 ## 💼 Connect
 If you have any questions or suggestions, feel free to connect:
