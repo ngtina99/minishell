@@ -26,6 +26,7 @@ make
 ```
 
 ## 🧮 Logic
+```text
 User Input
 ↓
 [ parsing/ ]
@@ -39,6 +40,7 @@ User Input
 ↓
 [ main_flow/ ]
 → manages shell loop, signal handling, environment init/cleanup
+```
 
 ## 🛕 Structure
 ```text
