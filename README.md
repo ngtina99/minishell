@@ -44,14 +44,14 @@ EOF
 ```
 
 ## 🌟 Features
-✅ Command parsing and execution
-✅ Pipes (|) support
-✅ Input/output redirection (>, <, >>, <<)
-✅ Built-in commands: cd, echo, pwd, exit, env, export, unset
-✅ Environment variable handling ($VAR, $?)
-✅ Logical operators: &&, ||
-✅ Custom signal handling (Ctrl+C, Ctrl+D, Ctrl+/)
-✅ Command history navigation
+- ✅ Command parsing and execution
+- ✅ Pipes (`|`) support
+- ✅ Input/output redirection (`>`, `<`, `>>`, `<<`)
+- ✅ Built-in commands: `cd`, `echo`, `pwd`, `exit`, `env`, `export`, `unset`
+- ✅ Environment variable handling (`VAR`, `$?`)
+- ✅ Logical operators: `&&`, `||`
+- ✅ Custom signal handling (`Ctrl+C`, `Ctrl+D`, `Ctrl+/`)
+- ✅ Command history navigation
 
 ## 🧪 Example Tests
 - Simple commands: /bin/ls, /bin/pwd, /bin/echo hello
