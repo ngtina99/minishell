@@ -31,7 +31,7 @@ make
 3️⃣ Example commands for *minishell*
 
 ```bash
-echo "Hello World"
+echo "As beautiful as a shell"
 ls -l | grep minishell
 exit
 ```
