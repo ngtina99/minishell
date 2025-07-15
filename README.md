@@ -25,6 +25,21 @@ make
 ./minishell
 ```
 
+## 🧮 Logic
+User Input
+↓
+[ parsing/ ]
+→ lexer → parser → handle quotes, files, redirections
+↓
+[ executor/ ]
+→ builds command list → manages pipes & heredoc → runs built-in or external
+↓
+[ built_ins/ ]
+→ handles built-in commands (if matched)
+↓
+[ main_flow/ ]
+→ manages shell loop, signal handling, environment init/cleanup
+
 ## 🛕 Structure
 ```text
 minishell-main/
@@ -62,22 +77,7 @@ minishell-main/
 │       ├── parser.c           --> parses token stream
 │       ├── parser_handle_files.c --> parses redirection
 │       └── parser_ifutils*.c  --> conditional parsing helpers
-
 ```
-
-User Input
-↓
-[ parsing/ ]
-→ lexer → parser → handle quotes, files, redirections
-↓
-[ executor/ ]
-→ builds command list → manages pipes & heredoc → runs built-in or external
-↓
-[ built_ins/ ]
-→ handles built-in commands (if matched)
-↓
-[ main_flow/ ]
-→ manages shell loop, signal handling, environment init/cleanup
 
 ## Features
 
