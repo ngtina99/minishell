@@ -43,14 +43,27 @@ This is a heredoc
 EOF
 ```
 
-🌟 Features
+## 🌟 Features
 ✅ Command parsing and execution
 ✅ Pipes (|) support
 ✅ Input/output redirection (>, <, >>, <<)
 ✅ Built-in commands: cd, echo, pwd, exit, env, export, unset
 ✅ Environment variable handling ($VAR, $?)
-✅ Custom signal handling (Ctrl+C, Ctrl+D, Ctrl+)
-✅ Command history
+✅ Logical operators: &&, ||
+✅ Custom signal handling (Ctrl+C, Ctrl+D, Ctrl+/)
+✅ Command history navigation
+
+## 🧪 Example Tests
+- Simple commands: /bin/ls, /bin/pwd, /bin/echo hello
+- With arguments: /bin/ls -l, echo hello world
+- Echo variations: echo -n no newline, echo "$USER", echo '$USER'
+- Exit variations: exit, exit 42
+- Check return values: echo $? after success or failure
+- Signals test: Run cat → Ctrl+C, Ctrl+D, Ctrl+\
+- Redirection tests: echo hello > file.txt, cat < file.txt, echo world >> file.txt
+- Pipes tests: ls -l | grep minishell, cat file | grep hello | wc -l
+- Environment path tests: Unset and reset $PATH to check behavior
+- Bonus (if present): ls && echo ok, false || echo failover
 
 ## 🧮 Logic
 ```text
