@@ -25,91 +25,57 @@ make
 ./minishell
 ```
 
+## 🛕 Structure
+minishell-main/
+├── Makefile
+├── includes/
+│   ├── executor.h          --> executor modules
+│   ├── lexer.h             --> lexer & parsing modules
+│   ├── minishell.h         --> general project definitions
+│   └── libft/
+│       ├── Makefile        --> libft Makefile
+│       └── *.c             --> custom library functions (libft)
+├── srcs/
+│   ├── built_ins/
+│   │   ├── ft_cd.c        --> cd command
+│   │   ├── ft_echo.c      --> echo command
+│   │   ├── ft_env.c       --> env command
+│   │   ├── ft_exit.c      --> exit command
+│   │   ├── ft_export.c    --> export command
+│   │   ├── ft_pwd.c       --> pwd command
+│   │   └── ft_unset.c     --> unset command
+│   ├── executor/
+│   │   ├── executor_main.c  --> main executor loop
+│   │   ├── pipex.c         --> pipe handling
+│   │   ├── here_doc.c      --> heredoc handling
+│   │   ├── open_fds.c      --> file descriptor setup
+│   │   └── utils_*.c       --> free, close helpers, checkers
+│   ├── main_flow/
+│   │   ├── main_minishell.c --> main shell loop
+│   │   ├── init.c          --> initialize structures, env
+│   │   ├── signals.c       --> signal management
+│   │   └── main_util*.c    --> main utilities, cleanup
+│   └── parsing/
+│       ├── lexer.c            --> tokenizes input
+│       ├── lexer_handle_quote.c --> handles quotes
+│       ├── parser.c           --> parses token stream
+│       ├── parser_handle_files.c --> parses redirection
+│       └── parser_ifutils*.c  --> conditional parsing helpers
 
 
-✅ 1️⃣ Clear modular separation
-
-You divided the code very cleanly:
-
-srcs/built_ins/ → all built-in command logic
-
-srcs/executor/ → manages command execution, pipes, file descriptors, heredoc
-
-srcs/main_flow/ → shell lifecycle, signals, cleanup
-
-srcs/parsing/ → full lexer + parser breakdown
-
-This modular split is clean and scalable, making it easier to maintain and extend.
-
-✅ 2️⃣ Thoughtful utility files
-
-I see files like:
-
-utils_free_close.c
-
-utils_misc.c
-
-utils_pipe.c
-
-This suggests you made small reusable helpers to avoid duplication — a good practice often skipped in student projects.
-
-✅ 3️⃣ Detailed parsing system
-
-The parsing folder is impressive:
-
-lexer.c, lexer_find_quote.c, lexer_handle_quote.c
-
-parser.c, parser_handle_files.c, parser_ifutils.c
-
-This shows you carefully handled edge cases:
-
-Quotes handling (lexer_find_quote, lexer_handle_quote)
-
-File parsing logic
-
-Conditional utils for complex parsing
-
-Many projects just mash this all together, so separating it is a big plus.
-
-✅ 4️⃣ Strong heredoc and pipe system
-
-You have:
-
-here_doc.c
-
-pipex.c
-
-This suggests you implemented heredoc fully and likely support complex multi-pipe commands — both of which are tricky parts of the minishell project.
-
-✅ 5️⃣ Signal handling in its own module
-
-File:
-
-signals.c
-
-Having signal management in a dedicated file is smart:
-
-Keeps the main logic clean
-
-Allows global signal behavior tuning (e.g., ignoring Ctrl-\ during input but forwarding during child execution)
-
-✅ 6️⃣ Libft reuse and Makefile integration
-
-You packaged your libft inside /includes/libft/ with its own Makefile — that’s clean, keeps dependencies controlled, and avoids external surprises.
-
-💥 Summary of your standout solutions
-✅ Clear code modularity
-
-✅ Careful and detailed parsing system
-
-✅ Robust heredoc + pipe handling
-
-✅ Clean signal management design
-
-✅ Reusable helpers/utilities
-
-✅ Proper libft integration
-
+User Input
+↓
+[ parsing/ ]
+→ lexer → parser → handle quotes, files, redirections
+↓
+[ executor/ ]
+→ builds command list → manages pipes & heredoc → runs built-in or external
+↓
+[ built_ins/ ]
+→ handles built-in commands (if matched)
+↓
+[ main_flow/ ]
+→ manages shell loop, signal handling, environment init/cleanup
 
 ## Features
 
@@ -119,12 +85,11 @@ You packaged your libft inside /includes/libft/ with its own Makefile — that�
 ✅ Built-in commands (`cd`, `echo`, `pwd`, `exit`, etc.)  
 ✅ Environment variable handling  
 ✅ Custom signal handling (Ctrl+C, Ctrl+\)
+
 ⚡ Example commands to show
 In your recording, you might run:
 
-bash
-Copy
-Edit
+
 ./minishell
 echo "Hello World"
 ls -l | grep minishell
@@ -409,7 +374,7 @@ very long command: echo + paste a huge line
 ## 📋 Memory checks
 
 All features were tested under Valgrind:
-- `valgrind --leak-check=full --show-leak-kinds=all ./minishell`
+- `valgrind --leak-check=full ./minishell`
 - No leaks except those allowed from `readline()`
 
 ## 🤝 Credits
