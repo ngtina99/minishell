@@ -26,6 +26,7 @@ make
 ```
 
 ## 🛕 Structure
+```text
 minishell-main/
 ├── Makefile
 ├── includes/
@@ -62,6 +63,7 @@ minishell-main/
 │       ├── parser_handle_files.c --> parses redirection
 │       └── parser_ifutils*.c  --> conditional parsing helpers
 
+```
 
 User Input
 ↓
