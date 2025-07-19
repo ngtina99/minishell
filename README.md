@@ -12,7 +12,7 @@ A C-based Unix shell built from scratch - aka the magic behind your terminal.
 1️⃣ **Clone the repository**
 
 ```bash
-git clone https://github.com/yourusername/webserv.git minishell
+git clone https://github.com/ngtina99/minishell.git minishell
 cd minishell
 ```
 
