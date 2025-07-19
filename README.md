@@ -132,7 +132,7 @@ I couldn’t have asked for a better partner for my first big team project. Work
 
 ## 💼 Connect
 If you have any questions or suggestions, feel free to connect:
-🔗 [LinkedIn: Valentina Nguyen](https://www.linkedin.com/in/valentina-nguyen-tina/) 🙋‍♀️
+🔗 [LinkedIn: Valentina Nguyen](https://www.linkedin.com/in/valentina-nguyen-t/) 🙋‍♀️
 
 ## 📜 License
 This project is licensed under the MIT License. See LICENSE for details.
